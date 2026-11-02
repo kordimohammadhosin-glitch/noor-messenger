@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>پیام‌رسان نور</title>
+<style>
+:root{--bg:#f4f7f3;--card:#fff;--ink:#18352c;--muted:#718078;--green:#08765b;--line:#e3ebe5;--gold:#c9a45c}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Tahoma,Arial,sans-serif}
+.wrap{max-width:980px;margin:auto;padding:22px}.top{background:linear-gradient(135deg,#073f34,#0b8061);color:#fff;border-radius:22px;padding:25px;position:relative;overflow:hidden}.top:after{content:"۞";position:absolute;left:20px;top:-28px;font-size:150px;color:#ffffff14}.brand{font-size:28px;font-weight:bold}.sub{font-size:13px;opacity:.85;margin-top:8px}.pill{display:inline-block;border:1px solid #ffffff55;border-radius:20px;padding:7px 12px;font-size:12px;margin-top:17px}
+.layout{display:grid;grid-template-columns:260px 1fr;gap:16px;margin-top:16px}.card{background:var(--card);border:1px solid var(--line);border-radius:17px;padding:17px;box-shadow:0 5px 20px #173c2410}.card h3{margin:0 0 14px;font-size:16px}.muted{color:var(--muted);font-size:12px;line-height:1.9}input,button{font:inherit}input{width:100%;padding:12px;border:1px solid var(--line);border-radius:11px;background:#fbfdfb;color:var(--ink);margin:6px 0 12px}button{border:0;border-radius:11px;padding:12px 15px;background:var(--green);color:white;cursor:pointer;font-weight:bold}.secondary{background:#edf5ef;color:var(--green);border:1px solid #dce9df}.full{width:100%}.hidden{display:none!important}.member{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--line);font-size:13px}.dot{width:9px;height:9px;background:#28a56e;border-radius:50%;display:inline-block;margin-left:7px}.chat{height:330px;overflow:auto;background:#f7faf7;border-radius:13px;padding:12px}.msg{max-width:82%;padding:11px 13px;border-radius:13px;background:#e7f2e9;margin:8px 0;font-size:13px;line-height:1.8}.mine{margin-right:auto;background:#d9eee4}.send{display:flex;gap:8px;margin-top:10px}.send input{margin:0;flex:1}.verse{text-align:center;font-size:20px;line-height:2.2;padding:16px;color:#246448}.notice{padding:12px;border-radius:11px;background:#fff7e7;color:#775a20;font-size:12px;line-height:1.9;margin-top:12px}.footer{text-align:center;color:var(--muted);font-size:11px;padding:20px}
+@media(max-width:700px){.wrap{padding:12px}.layout{grid-template-columns:1fr}.top{padding:20px}.chat{height:270px}}
+</style></head>
+<body><main class="wrap">
+<header class="top"><div class="brand">☪ پیام‌رسان نور</div><div class="sub">ارتباطی پاک، در فضایی معنوی</div><span class="pill">فضای خصوصی · حداکثر ۱۰ عضو</span></header>
+<section id="login" class="card" style="max-width:440px;margin:18px auto">
+<h3>ورود با کد دعوت</h3><p class="muted">برای ورود، نام نمایشی و کد دعوتی را وارد کنید که مدیر در اختیارتان گذاشته است.</p>
+<label class="muted">نام نمایشی</label><input id="name" maxlength="30" placeholder="مثلاً علی">
+<label class="muted">کد دعوت</label><input id="code" placeholder="کد دعوت را وارد کنید" autocomplete="off">
+<button id="enter" class="full">ورود به نور</button><p id="loginError" class="muted" role="alert"></p>
+<div class="notice">نسخه نمایشی: کدهای نمونه برای آزمایش عبارت‌اند از NOOR01 تا NOOR10. در نسخه آنلاین واقعی، کدها باید از سرور صادر و فقط یک‌بار مصرف شوند.</div>
+</section>
+<section id="app" class="hidden">
+<div class="layout">
+<aside class="card"><h3>اعضای نور <span class="muted" id="count"></span></h3><div id="members"></div><div class="notice">عضویت محدود به ۱۰ نفر است. برای حفظ حریم خصوصی، کد دعوت را با دیگران به اشتراک نگذارید.</div><button class="secondary full" id="logout" style="margin-top:12px">خروج از حساب</button></aside>
+<div class="card"><div style="display:flex;justify-content:space-between;align-items:center;gap:8px"><h3>گفت‌وگوی جمعی</h3><span class="muted">🌿 محفل نور</span></div><div class="chat" id="messages"><div class="msg">السلام علیکم و رحمةالله 🌙<br>به جمع کوچک نور خوش آمدید.</div></div><div class="send"><input id="text" maxlength="1000" placeholder="پیام خود را بنویسید..."><button id="send">ارسال</button></div><p class="muted">این نسخه فقط نمایشی است؛ پیام‌ها هنوز بین دستگاه‌های مختلف ارسال نمی‌شوند.</p>
+<div class="card" style="margin-top:16px;background:#fbfdfb"><h3>آیه‌ای برای امروز</h3><div class="verse">فَإِنَّ مَعَ الْعُسْرِ يُسْرًا</div><p class="muted" style="text-align:center">پس بی‌تردید با دشواری، آسانی است. · سوره شرح، آیه ۵</p></div>
+</div></div></section>
+<div class="footer">✦ پیام‌رسان نور · نسخه اولیه نمایشی ✦</div></main>
+<script>
+const codes=Array.from({length:10},(_,i)=>'NOOR'+String(i+1).padStart(2,'0'));
+const $=id=>document.getElementById(id);
+let user=null;
+let members=JSON.parse(localStorage.getItem('noor_members_demo')||'[]');
+function save(){localStorage.setItem('noor_members_demo',JSON.stringify(members))}
+function render(){
+$('count').textContent='('+members.length+'/10)';
+$('members').innerHTML='';
+members.forEach(m=>{let d=document.createElement('div');d.className='member';let s=document.createElement('span');s.textContent=m.name;let st=document.createElement('span');st.innerHTML='<i class="dot"></i>عضو';d.append(s,st);$('members').append(d)});
+}
+$('enter').onclick=()=>{
+let name=$('name').value.trim(),code=$('code').value.trim().toUpperCase();
+$('loginError').textContent='';
+if(!name){$('loginError').textContent='لطفاً نام نمایشی را وارد کنید.';return}
+if(!codes.includes(code)){$('loginError').textContent='کد دعوت معتبر نیست.';return}
+let existing=members.find(m=>m.code===code);
+if(existing){if(existing.name!==name){$('loginError').textContent='این کد قبلاً استفاده شده است.';return}user=existing}
+else{if(members.length>=10){$('loginError').textContent='ظرفیت ۱۰ عضو تکمیل شده است.';return}user={name,code};members.push(user);save()}
+$('login').classList.add('hidden');$('app').classList.remove('hidden');render();
+};
+$('logout').onclick=()=>{user=null;$('app').classList.add('hidden');$('login').classList.remove('hidden')};
+function send(){let t=$('text').value.trim();if(!t)return;let d=document.createElement('div');d.className='msg mine';let b=document.createElement('b');b.textContent=user.name+' · ';let span=document.createElement('span');span.textContent=t;d.append(b,span);$('messages').append(d);$('messages').scrollTop=$('messages').scrollHeight;$('text').value=''}
+$('send').onclick=send;$('text').onkeydown=e=>{if(e.key==='Enter')send()};
+</script></body></html>
